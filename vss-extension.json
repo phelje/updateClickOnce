@@ -1,0 +1,42 @@
+{
+    "manifestVersion": 1,
+    "id": "UpdateClickOncePackage",
+    "name": "Update ClickOnce Package",
+    "version": "1.0.1",
+    "publisher": "IfPCInsuranceSE",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tool for updating MS ClickOnce packages.",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "content": {
+        "details": {
+            "path": "readme.md"
+        }
+    },
+    "icons": {
+        "default": "images/modifyClickOnce128.png",
+        "large": "images/modifyClickOnce512.png"
+    },
+    "files": [
+        {
+            "path": "updateClickOnce"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "updateClickOnce"
+            }
+        }
+    ]
+}
