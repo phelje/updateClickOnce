@@ -16,7 +16,14 @@
     "content": {
         "details": {
             "path": "readme.md"
+        },
+        "license": {
+            "path": "license.md"
         }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/phelje/updateClickOnce"
     },
     "icons": {
         "default": "images/modifyClickOnce128.png",
