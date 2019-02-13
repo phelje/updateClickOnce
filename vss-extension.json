@@ -2,8 +2,9 @@
     "manifestVersion": 1,
     "id": "UpdateClickOncePackage",
     "name": "Update ClickOnce Package",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "publisher": "IfPCInsuranceSE",
+    "public": true,
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
