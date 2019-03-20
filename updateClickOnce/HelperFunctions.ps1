@@ -36,7 +36,7 @@ function Get-MageFolder {
         Write-Error "Mage.exe folder not found!!";
         exit;
     }
-    Write-Information "Mage.exe found: $($mageFolder.FullName)"
+    Write-Debug "Mage.exe found: $($mageFolder.FullName)"
     return $mageFolder.FullName
 }
 
