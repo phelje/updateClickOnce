@@ -92,6 +92,14 @@
         "helpMarkDown": "The minimum version of this application a user can run. This flag makes the named version of your application a required update, use %version% to use the current version as minimum. The argument must be a valid version string of the format N.N.N.N"
       },
       { 
+        "name": "ReplaceDeploy",
+        "type": "bool",
+        "label": "Replace Deploy File Extension",
+        "defaultValue": false,
+        "required": true,
+        "helpMarkDown": "Select this if the msbuild publish step produces .deploy files."
+      },
+      { 
           "name": "Advanced", 
           "type": "multiLine", 
           "label": "Advanced XML modification", 
