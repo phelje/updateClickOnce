@@ -95,7 +95,7 @@
         "name": "ReplaceDeploy",
         "type": "bool",
         "label": "Replace Deploy File Extension",
-        "defaultValue": false,
+        "defaultValue": true,
         "required": true,
         "helpMarkDown": "Select this if the msbuild publish step produces .deploy files."
       },
