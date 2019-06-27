@@ -48,23 +48,30 @@ function Get-ApplicationName($folder){
 	return "$name"
 }
 
-function Update-DeployExtensions{
+function Remove-DeployExtensions{
     param(
-        [string]$folder,
-        [switch]$RemoveExtension
+        [string]$folder
     )
-	if($RemoveExtension){
-		Write-Host "Removing .deploy extension";
-        Get-ChildItem -Path:$folder -File -Recurse -Include @("*.deploy") | Rename-Item -NewName { $_.Name -replace '.deploy','' }
-		Write-Host ".deploy extensions removed!";
-	}
-	else{
-		Write-Host "Adding .deploy extension";
-        Get-ChildItem -Path:$folder -File -Recurse -Exclude @("*.manifest","*.application") | Rename-Item -NewName { $_.Name + ".deploy" }
-		Write-Host ".deploy extensions added";
+        Write-Host "Removing .deploy extension";
+        $renamedFiles = Get-ChildItem -Path:$folder -File -Recurse -Include @("*.deploy") | Rename-Item -NewName { $_.Name -replace '.deploy','' } -PassThru
+        if($renamedFiles.Exists){
+            Write-Host "$($renamedFiles.count) .deploy extensions removed!";
+        }
+        else{
+            Write-Host "No .deploy extensions found";
+        }
+    return $renamedFiles;
+}
+
+function Restore-DeployExtensions{
+    param(
+        $files
+    )
+    if($files.Exists){
+        Write-Host "Adding .deploy extension";
+        $files | Rename-Item -NewName { $_.Name + ".deploy" }
+        Write-Host ".deploy extensions added to $($files.count) files";    
     }
-    
-    
 }
 
 function Update-ClickOnce{

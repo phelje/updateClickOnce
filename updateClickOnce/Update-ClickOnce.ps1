@@ -48,12 +48,12 @@ $binaryFolder = Rename-BinariesFolder $binaryFolder $Version
 $appManifestPath = "$binaryFolder\$appName.exe.manifest"
 
 # Remove .deploy extensions
-Update-DeployExtensions $binaryFolder -RemoveExtension
+$deployFiles = Remove-DeployExtensions $binaryFolder -RemoveExtension
 
 # Sign package
 Update-ClickOnce -mageFolder:$mageFolder -appManifest:$appManifestPath -packageManifest:$packageManifestPath -manifestName:$appName -applicationName:$ApplicationName -version:$Version -certFile:$Certificate -certPwd:$CertificatePassword -publisher:$Publisher -providerUrl:$ProviderUrl -minVersion:$MinVersion -advanced:$Advanced
 
-# Add .deploy extensions
-Update-DeployExtensions $binaryFolder
+# Restore .deploy extensions
+Restore-DeployExtensions -files:$deployFiles
 
 ## tfx extension create --manifest-globs vss-extension.json --rev-version
