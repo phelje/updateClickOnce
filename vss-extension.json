@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "UpdateClickOncePackage",
     "name": "Update ClickOnce Package",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "publisher": "IfPCInsuranceSE",
     "public": true,
     "targets": [
