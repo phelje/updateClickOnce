@@ -1,20 +1,20 @@
 ﻿Param(  
-    [Parameter(Mandatory=$true)][string] $ApplicationName,
-    [Parameter(Mandatory=$false)][string] $Publisher,
-    [Parameter(Mandatory=$true)][string] $Certificate,
-    [Parameter(Mandatory=$false)][string] $CertificatePassword,
-    [Parameter(Mandatory=$false)][string] $ProviderUrl,
-    [Parameter(Mandatory=$true)][string] $ApplicationFolder,
-    [Parameter(Mandatory=$false)][string] $Version,
-    [Parameter(Mandatory=$false)][string] $MinVersion,
-    [Parameter(Mandatory=$false)][string] $Advanced
+    [Parameter(Mandatory = $true)][string] $ApplicationName,
+    [Parameter(Mandatory = $false)][string] $Publisher,
+    [Parameter(Mandatory = $true)][string] $Certificate,
+    [Parameter(Mandatory = $false)][string] $CertificatePassword,
+    [Parameter(Mandatory = $false)][string] $ProviderUrl,
+    [Parameter(Mandatory = $true)][string] $ApplicationFolder,
+    [Parameter(Mandatory = $false)][string] $Version,
+    [Parameter(Mandatory = $false)][string] $MinVersion,
+    [Parameter(Mandatory = $false)][string] $Advanced
 )
 
 # Load helper functions
 . ./HelperFunctions.ps1
 
 #Verify that ApplicationFolder exists!
-if(!(Test-Path -Path:$ApplicationFolder)){
+if (!(Test-Path -Path:$ApplicationFolder)) {
     Write-Error "ApplicationFolder: $ApplicationFolder is missing";
     exit;
 }
@@ -34,14 +34,21 @@ if (!($ProviderUrl -match ".+\.application$")) {
 $Advanced = $Advanced.Split("`r`n") | Select-String -Pattern "#" -NotMatch | Where-Object -Property "line"
 
 #Verify version and minversion format N.N.N.N
-if (!($Version -match "\d+(\.(\d)+){3}") -and ![string]::IsNullOrEmpty($Version)){
-    Write-Error "Version number dont match N.N.N.N format"
+if (!($Version -match "\d+(\.(\d)+){3}") -and ![string]::IsNullOrEmpty($Version)) {
+    Write-Error "Version number don´t contain N.N.N.N"
     exit;
+}
+else {
+    $Version = $Matches[0]
 }
 if (![string]::IsNullOrEmpty($MinVersion) -and $MinVersion -ne "%version%" -and !($MinVersion -match "\d+(\.(\d)+){3}")) {
-    Write-Error "MinVersion number dont match N.N.N.N format"
+    Write-Error "MinVersion number don´t contain N.N.N.N"
     exit;
 }
+else {
+    $MinVersion = $Matches[0]
+}
+
 
 # Rename binary folder to version
 $binaryFolder = Rename-BinariesFolder $binaryFolder $Version

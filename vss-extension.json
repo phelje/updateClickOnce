@@ -1,50 +1,46 @@
 {
-    "manifestVersion": 1,
-    "id": "UpdateClickOncePackage",
-    "name": "Update ClickOnce Package",
-    "version": "1.0.4",
-    "publisher": "IfPCInsuranceSE",
-    "public": true,
-    "targets": [
-        {
-            "id": "Microsoft.VisualStudio.Services"
-        }
-    ],    
-    "description": "Tool for updating MS ClickOnce packages.",
-    "categories": [
-        "Azure Pipelines"
-    ],
-    "content": {
-        "details": {
-            "path": "readme.md"
-        },
-        "license": {
-            "path": "license.md"
-        }
+  "manifestVersion": 1,
+  "id": "UpdateClickOncePackage",
+  "name": "Update ClickOnce Package",
+  "version": "1.0.5",
+  "publisher": "IfPCInsuranceSE",
+  "public": true,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Tool for updating MS ClickOnce packages.",
+  "categories": ["Azure Pipelines"],
+  "content": {
+    "details": {
+      "path": "readme.md"
     },
-    "repository": {
-        "type": "git",
-        "uri": "https://github.com/phelje/updateClickOnce"
-    },
-    "icons": {
-        "default": "images/modifyClickOnce128.png",
-        "large": "images/modifyClickOnce512.png"
-    },
-    "files": [
-        {
-            "path": "updateClickOnce"
-        }
-    ],
-    "contributions": [
-        {
-            "id": "custom-build-release-task",
-            "type": "ms.vss-distributed-task.task",
-            "targets": [
-                "ms.vss-distributed-task.tasks"
-            ],
-            "properties": {
-                "name": "updateClickOnce"
-            }
-        }
-    ]
+    "license": {
+      "path": "license.md"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/phelje/updateClickOnce"
+  },
+  "icons": {
+    "default": "images/modifyClickOnce128.png",
+    "large": "images/modifyClickOnce512.png"
+  },
+  "files": [
+    {
+      "path": "updateClickOnce"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "custom-build-release-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": ["ms.vss-distributed-task.tasks"],
+      "properties": {
+        "name": "updateClickOnce"
+      }
+    }
+  ]
 }
