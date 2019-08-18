@@ -41,8 +41,8 @@ if (!($Version -match "\d+(\.(\d)+){3}") -and ![string]::IsNullOrEmpty($Version)
 else {
     $Version = $Matches[0]
 }
-if (![string]::IsNullOrEmpty($MinVersion) -and $MinVersion -ne "%version%" -and !($MinVersion -match "\d+(\.(\d)+){3}")) {
-    Write-Error "MinVersion number don´t contain N.N.N.N"
+if (![string]::IsNullOrEmpty($MinVersion) -and !($MinVersion -match "(\d+(\.(\d)+){3}|\%version\%)")) {
+    Write-Error "MinVersion number don´t contain N.N.N.N or %version%"
     exit;
 }
 else {
