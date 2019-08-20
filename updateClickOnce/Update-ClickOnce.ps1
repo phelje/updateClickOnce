@@ -38,14 +38,14 @@ if (!($Version -match "\d+(\.(\d)+){3}") -and ![string]::IsNullOrEmpty($Version)
     Write-Error "Version number don´t contain N.N.N.N"
     exit;
 }
-else {
+elseif ($Matches) {
     $Version = $Matches[0]
 }
 if (![string]::IsNullOrEmpty($MinVersion) -and !($MinVersion -match "(\d+(\.(\d)+){3}|\%version\%)")) {
     Write-Error "MinVersion number don´t contain N.N.N.N or %version%"
     exit;
 }
-else {
+elseif ($Matches) {
     $MinVersion = $Matches[0]
 }
 
