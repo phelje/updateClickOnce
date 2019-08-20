@@ -12,7 +12,7 @@ Specify your ClickOnce application and you can modify any of these properties:
 
 # How to
 Set up your normal build process, then in your release task use this extension to modify the needed properties.  
-Version and minimum version must be a string of the format "N.N.N.N", where "N" is an unsigned 32-bit integer.  
+Version and minimum version must be a string containing the version in the format "N.N.N.N", where "N" is an unsigned 32-bit integer.  
 In minimum version you can use "%version%", this will be replaced with "Version number" if provided else the current assembly version will be used.  
 
 Since Mage is used to modify the ClickOnce package more valuable information can be found here: [Mage.exe ref](https://docs.microsoft.com/en-us/dotnet/framework/tools/mage-exe-manifest-generation-and-editing-tool#syntax) 
