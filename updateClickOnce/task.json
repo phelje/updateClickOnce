@@ -7,7 +7,10 @@
   "author": "Peter Helje",
   "helpMarkDown": "",
   "category": "Utility",
-  "visibility": ["Build", "Release"],
+  "visibility": [
+    "Build",
+    "Release"
+  ],
   "demands": [],
   "version": {
     "Major": "1",
@@ -104,7 +107,7 @@
     }
   ],
   "execution": {
-    "PowerShell": {
+    "PowerShell3": {
       "target": "$(currentDirectory)\\Update-ClickOnce.ps1",
       "argumentFormat": "",
       "workingDirectory": "$(currentDirectory)"
