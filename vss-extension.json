@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "UpdateClickOncePackage",
   "name": "Update ClickOnce Package",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "publisher": "IfPCInsuranceSE",
   "public": true,
   "targets": [
@@ -11,7 +11,9 @@
     }
   ],
   "description": "Tool for updating MS ClickOnce packages.",
-  "categories": ["Azure Pipelines"],
+  "categories": [
+    "Azure Pipelines"
+  ],
   "content": {
     "details": {
       "path": "readme.md"
@@ -37,7 +39,9 @@
     {
       "id": "custom-build-release-task",
       "type": "ms.vss-distributed-task.task",
-      "targets": ["ms.vss-distributed-task.tasks"],
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
       "properties": {
         "name": "updateClickOnce"
       }
