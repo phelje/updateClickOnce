@@ -1,14 +1,14 @@
-﻿Param(  
-    [Parameter(Mandatory = $true)][string] $ApplicationName,
-    [Parameter(Mandatory = $false)][string] $Publisher,
-    [Parameter(Mandatory = $true)][string] $Certificate,
-    [Parameter(Mandatory = $false)][string] $CertificatePassword,
-    [Parameter(Mandatory = $false)][string] $ProviderUrl,
-    [Parameter(Mandatory = $true)][string] $ApplicationFolder,
-    [Parameter(Mandatory = $false)][string] $Version,
-    [Parameter(Mandatory = $false)][string] $MinVersion,
-    [Parameter(Mandatory = $false)][string] $Advanced
-)
+﻿Import-VstsLocStrings "$PSScriptRoot\Task.json"
+
+$ApplicationName = Get-VstsInput -Name ApplicationName -Require
+$Publisher = Get-VstsInput -Name Publisher
+$Certificate = Get-VstsInput -Name Certificate -Require
+$CertificatePassword = Get-VstsInput -Name CertificatePassword
+$ProviderUrl = Get-VstsInput -Name ProviderUrl
+$ApplicationFolder = Get-VstsInput -Name ApplicationFolder -Require
+$Version = Get-VstsInput -Name Version
+$MinVersion = Get-VstsInput -Name MinVersion
+$Advanced = Get-VstsInput -Name Advanced
 
 # Load helper functions
 . ./HelperFunctions.ps1
@@ -31,7 +31,7 @@ if (!($ProviderUrl -match ".+\.application$")) {
 }
 
 #Remove comment lines from Advanced string
-$Advanced = $Advanced.Split("`r`n") | Select-String -Pattern "#" -NotMatch | Where-Object -Property "line"
+$Advanced = $Advanced -replace "(?m)^\#.*$";
 
 #Verify version and minversion format N.N.N.N
 if (!($Version -match "\d+(\.(\d)+){3}") -and ![string]::IsNullOrEmpty($Version)) {
@@ -48,7 +48,6 @@ if (![string]::IsNullOrEmpty($MinVersion) -and !($MinVersion -match "(\d+(\.(\d)
 elseif ($Matches) {
     $MinVersion = $Matches[0]
 }
-
 
 # Rename binary folder to version
 $binaryFolder = Rename-BinariesFolder $binaryFolder $Version

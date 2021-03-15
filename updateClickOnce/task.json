@@ -5,7 +5,7 @@
   "description": "Gives you the ability to modify some properties on a ClickOnce Package.",
   "helpUrl": "https://marketplace.visualstudio.com/items?itemName=IfPCInsuranceSE.UpdateClickOncePackage",
   "author": "Peter Helje",
-  "helpMarkDown": "",
+  "helpMarkDown": "Enables modification of Application Name, Version number, Minimum version and [more](https://marketplace.visualstudio.com/items?itemName=IfPCInsuranceSE.UpdateClickOncePackage)",
   "category": "Utility",
   "visibility": [
     "Build",
@@ -14,8 +14,8 @@
   "demands": [],
   "version": {
     "Major": "1",
-    "Minor": "0",
-    "Patch": "9"
+    "Minor": "1",
+    "Patch": "6"
   },
   "minimumAgentVersion": "1.83.0",
   "instanceNameFormat": "Update ClickOnce Package",
