@@ -30,9 +30,6 @@ if (!($ProviderUrl -match ".+\.application$")) {
     $ProviderUrl = "$($ProviderUrl.TrimEnd('/'))/$appName.application" 
 }
 
-#Remove comment lines from Advanced string
-$Advanced = $Advanced -replace "(?m)^\#.*$";
-
 #Verify version and minversion format N.N.N.N
 if (!($Version -match "\d+(\.(\d)+){3}") -and ![string]::IsNullOrEmpty($Version)) {
     Write-Error "Version number don´t contain N.N.N.N"

@@ -142,6 +142,8 @@ function Update-ClickOnce {
 
     #If advanced config is specified modify the XML and resign.
     if ([bool]$advanced) {
+        #Remove comment lines from Advanced string
+        $advanced = $advanced -replace "(?m)^\#.*$";
         Set-AdvancedChanges -advanced:$advanced -packageManifest:$packageManifest -mageFolder:$mageFolder -certFile:$certFile -password:$passwd
     }
 }
